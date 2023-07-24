@@ -235,5 +235,4 @@ bindsym $mod+Print exec gnome-screenshot -a
 
 # Suspend, Shutdown or Restart the computer
 bindsym $mod+Escape exec systemctl suspend
-bindsym $mod+Shift+Escape exec poweroff
 bindsym $mod+Control+Escape exec reboot
