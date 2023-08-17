@@ -4,7 +4,7 @@
 - **Bar:** [polybar](https://github.com/polybar/polybar)
 - **Wallpaper:** 4chan (because I'm a zoomer)
 - **Terminal emulator** Urxvt
-- **Program launcher** Rofi
+- **Program launcher** [Rofi](https://github.com/davatorium/rofi)
 
 
 ## **TODO** 
