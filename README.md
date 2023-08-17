@@ -4,8 +4,8 @@
 - **Bar:** [polybar](https://github.com/polybar/polybar)
 - **Wallpaper:** 4chan (because I'm a zoomer)
 - **Terminal emulator** Urxvt
+- **Program launcher** Rofi
 
 
 ## **TODO** 
-- Put a program launcher (for now it's rofi, but I'll try to costumize it)
 - Put a beautiful audio visualizer because updoots
