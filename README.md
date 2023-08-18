@@ -5,7 +5,5 @@
 - **Wallpaper:** 4chan (because I'm a zoomer)
 - **Terminal emulator** Urxvt
 - **Program launcher** [Rofi](https://github.com/davatorium/rofi)
+- **Audio visualizer** [cava](https://github.com/karlstav/cava/tree/master)
 
-
-## **TODO** 
-- Put a beautiful audio visualizer because updoots
