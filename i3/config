@@ -64,7 +64,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec kitty -o allow_remote_control=yes -o enabled_layouts=tall
 
 # kill focused window
 bindsym $mod+Shift+q kill
