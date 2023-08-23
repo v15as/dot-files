@@ -6,4 +6,4 @@
 - **Terminal emulator** [kitty](https://github.com/kovidgoyal/kitty)
 - **Program launcher** [Rofi](https://github.com/davatorium/rofi)
 - **Audio visualizer** [cava](https://github.com/karlstav/cava/tree/master)
-
+- **File Manager** [Ranger](https://github.com/ranger/ranger)
