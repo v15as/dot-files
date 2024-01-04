@@ -20,7 +20,7 @@ font pango:monospace 8
 #font pango:DejaVu Sans Mono 8
 
 # Set wallpaper
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/cowboy_Galloping.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/wallpaper.png
 
 #set transparency
 exec_always --no-startup-id xcompmgr
