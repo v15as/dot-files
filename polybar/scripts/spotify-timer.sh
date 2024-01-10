@@ -1,5 +1,6 @@
 #!/bin/bash
 
-length=$(playerctl metadata --format "{{duration(mpris:length)}}")
-position=$(playerctl metadata --format "{{duration(position)}}")
+PLAYER="spotify"
+length=$(playerctl metadata --player=$PLAYER --format "{{duration(mpris:length)}}")
+position=$(playerctl metadata  --player=$PLAYER --format "{{duration(position)}}")
 echo "($position | $length)"
