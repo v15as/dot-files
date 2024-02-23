@@ -64,6 +64,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
+# build kitty from source then create a link in /usr/bin to kitty/launcher/kitty
 bindsym $mod+Return exec kitty -o allow_remote_control=yes -o enabled_layouts=tall
 
 # kill focused window
