@@ -11,13 +11,12 @@ enable_audio_bell 	no
 modify_font cell_width 110%
 modify_font cell_height 4px
 window_padding_width 10
-background_opacity 0.7
-background_blur 0
+background_opacity 0.9
 
 
 
 
 # BEGIN_KITTY_THEME
-# duckbones
+# Argonaut
 include current-theme.conf
 # END_KITTY_THEME
