@@ -1,0 +1,5 @@
+require("settings.autocmd")
+require("settings.settings")
+require("settings.keybinds")
+require("config.lazy")
+require("settings.which-key")

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+WALL_DIR="$HOME/Pictures/wallpapers"
+
+CWD="$(pwd)"
+
+cd "$WALL_DIR" || exit
+
+IFS=$'\n'
+
+SELECTED_WALL=$(for a in *.jpg *.png; do [ -f "$a" ] && echo "img:$(realpath "$a"):text:$a"; done | wofi --dmenu --allow-images)
+
+# Extract the file path from the selected output (between 'img:' and ':text:')
+if [ -n "$SELECTED_WALL" ]; then
+    IMG_PATH=$(echo "$SELECTED_WALL" | cut -d':' -f2)
+    if [ -n "$IMG_PATH" ]; then
+        paperchange-backend "$IMG_PATH"
+    else
+        echo "Error: Could not extract image path from selection."
+        exit 1
+    fi
+fi
+
+cd "$CWD" || exit

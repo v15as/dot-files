@@ -1,0 +1,195 @@
+return require('packer').startup({
+    function(use)
+        ---------------------
+        -- Package Manager --
+        ---------------------
+
+        use('wbthomason/packer.nvim')
+
+        ----------------------
+        -- Required plugins --
+        ----------------------
+
+        use('nvim-lua/plenary.nvim')
+
+        use({
+            'kyazdani42/nvim-web-devicons',
+            config = function()
+                require('nvim-web-devicons').setup()
+            end,
+        })
+
+        use { "bluz71/vim-nightfly-colors", as = "nightfly" }
+        use { "rebelot/kanagawa.nvim", as = "kanagawa" }
+        use {
+            "mcchrish/zenbones.nvim",
+            -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+            -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+            -- In Vim, compat mode is turned on as Lush only works in Neovim.
+            requires = "rktjmp/lush.nvim"
+        }
+
+        use {
+            'nvim-lualine/lualine.nvim',
+
+            config = function()
+                require('MicoMan.plugins.lualine')
+            end,
+        }
+
+        -- Close html tags, because treesitter isn't doing the job for some reason
+        use {'alvan/vim-closetag'}
+
+        -- You can use Coc altough the Autocompletion window will probably be under the mason autocomplete window
+        -- use {'neoclide/coc.nvim', branch = 'release'}
+        -----------------------------------
+        -- Treesitter: Better Highlights --
+        -----------------------------------
+
+        use({
+            {
+                'nvim-treesitter/nvim-treesitter',
+                event = 'CursorHold',
+                run = ':TSUpdate',
+
+                config = function()
+                    require('MicoMan.plugins.treesitter')
+                end,
+            },
+            { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
+            { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
+            { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
+            { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
+            { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' },
+        })
+
+        use 'mfussenegger/nvim-jdtls'
+        -------------------------
+        -- Editor UI Niceties --
+        --------------------------
+
+        -- Lua
+        -- use {
+        --     "folke/which-key.nvim",
+        --     config = function()
+        --         require('MicoMan.plugins.whichkey.whichkey')
+        --     end
+        -- }
+
+        -- use({
+        --     'lukas-reineke/indent-blankline.nvim',
+        --     main = "ibl",
+        --     config = function()
+        --         require('MicoMan.plugins.indentline')
+        --     end,
+        -- })
+
+        --use {
+        --    "windwp/nvim-autopairs",
+        --    config = function() require("nvim-autopairs").setup {} end
+        --}
+        -- install without yarn or npm
+		use({ "iamcco/markdown-preview.nvim", 
+			run = "cd app && npm install", 
+			setup = function() 
+				vim.g.mkdp_filetypes = { "markdown" } 
+			end, 
+			ft = { "markdown" }, 
+		})
+
+        use({
+           'norcalli/nvim-colorizer.lua',
+           event = 'CursorHold',
+           config = function()
+               require('MicoMan.plugins.colorizer')
+           end,
+         })
+
+        use({'tpope/vim-surround'})
+
+        use {
+            'kevinhwang91/nvim-ufo',
+            requires = 'kevinhwang91/promise-async',
+            config = function()
+                require('MicoMan.plugins.ufo')
+            end,
+        }
+        ---------------------------------
+        -- Navigation and Fuzzy Search --
+        ---------------------------------
+
+        use({
+            'nvim-tree/nvim-tree.lua',
+            event = 'CursorHold',
+            config = function()
+                require('MicoMan.plugins.nvim-tree')
+            end,
+        })
+
+        use({
+            {
+                'nvim-telescope/telescope.nvim',
+                event = 'CursorHold',
+                config = function()
+                    require('MicoMan.plugins.telescope')
+                end,
+            },
+            {
+                'nvim-telescope/telescope-symbols.nvim',
+                after = 'telescope.nvim',
+            },
+        })
+
+        --------------
+        -- Terminal --
+        --------------
+
+        use({
+            'numToStr/FTerm.nvim',
+            event = 'CursorHold',
+            config = function()
+                require('MicoMan.plugins.fterm')
+            end,
+        })
+
+
+        -------------
+        -- Copilot --
+        -------------
+
+        use{"github/copilot.vim"}
+
+        -----------------------------------
+        -- LSP, Completions and Snippets --
+        -----------------------------------
+
+        use{
+            "scalameta/nvim-metals",
+        }
+
+        use {
+            'VonHeikemen/lsp-zero.nvim',
+            branch = 'v3.x',
+            requires = {
+                --- Uncomment these if you want to manage LSP servers from neovim
+                {'williamboman/mason.nvim'},
+                {'williamboman/mason-lspconfig.nvim'},
+
+                -- LSP Support
+                {'neovim/nvim-lspconfig'},
+                -- Autocompletion
+                {'hrsh7th/nvim-cmp'},
+                {'hrsh7th/cmp-nvim-lsp'},
+                {'L3MON4D3/LuaSnip'},
+            }
+        }
+
+    end,
+    config = {
+        display = {
+            open_fn = function()
+                return require('packer.util').float({ border = 'single' })
+            end,
+        },
+    },
+})

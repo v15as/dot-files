@@ -1,0 +1,321 @@
+/*@import url('../../.cache/wal/colors-waybar.css');*/
+
+@import "colors.css";
+
+@define-color hover @inverse_on_surface;
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: "CodeNewRoman Nerd Font Propo";
+    font-weight: 400;
+    font-size: 15px;
+    border-radius: 7px;
+}
+
+#custom-expand,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#custom-spotify,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#custom-waypaper,
+#tray,
+#mode,
+#custom-weather,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#custom-cava,
+#custom-gpt,
+#custom-mspowers,
+#custom-notification,
+#pulseaudio-slider,
+#custom-colorpicker,
+#custom-pacman,
+#custom-diskfree,
+#mpd {
+    background: @background;
+    color: @primary;
+    padding: 1px 10px 1px 10px;
+    margin-top: 5px;
+}
+
+#custom-colorpicker,
+#cpu,
+#memory,
+#temperature,
+#custom-pacman,
+#custom-diskfree,
+#tray{
+    margin-right: 5px;
+}
+
+
+window#waybar {
+    background-color: rgba(43, 48, 59, 0);
+    color: #ffffff;
+    border-radius: 0px;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+tooltip {
+    background: rgb(30, 30, 46);
+    border-radius: 7px;
+}
+
+
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: @hover;
+}
+
+
+/* MODULES LEFT */
+/* ------------------------------ */
+
+#workspaces button {
+    padding: 0 5px;
+    color: alpha(@primary, .4);
+    background-color: transparent;
+}
+
+#workspaces button:hover {
+    background: alpha(@hover, 0.75);
+    border-radius: 7px;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+
+#workspaces button.active {
+    color: @primary;
+    background: alpha(@on_background, .25);
+    border-radius: 7px;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+#workspaces button.empty {
+    color: alpha(Black,1);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+
+#workspaces button.empty:hover {
+    color: rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+
+#workspaces button.empty.active {
+    color: @primary;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+#custom-notification {
+    margin-left: 5px;
+}
+
+/* ------------------------------ */
+
+/* MODULES RIGHT */
+#custom-expand {
+    margin-right: 5px;
+}
+
+#tray {
+    background-color: @background;
+    margin-left: 5px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#group-expand{
+    padding: 5px 5px;
+    transition: all .3s ease; 
+}
+
+#pulseaudio-slider {
+    /*margin: 5px 2px 0 2px;*/ /* Match margin-top of other modules */
+    margin-right: 5px;
+    background: @background;
+    border-radius: 7px;
+    min-height: 17px; /* Match approximate height of text modules */
+}
+
+#pulseaudio-slider trough {
+    min-height: 10px; /* Match font-size for consistency */
+    min-width: 80px; /* Slightly wider for balance */
+    border-radius: 5px;
+    background-color: @background;
+}
+
+#pulseaudio-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background-color: @primary;
+    border: none;
+}
+
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+#network {
+    color: @on_background;
+    margin-right: 5px;
+}
+
+#network.disconnected {
+    color: #f2564b;
+}
+
+#network:hover {
+    background-color: @hover;
+}
+
+#battery{
+    margin-right: 5px;
+    transition: all .3s ease;
+    color:@on_background;
+}
+
+#battery.charging {
+    color: #26A65B;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffbe61;
+}
+
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery:hover {
+    background-color: @hover;
+}
+
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 0px #ffffff;
+    background: rgba(5, 5, 5, 0.3);
+    color: #000000;
+    padding: 1px 10px 1px 10px;
+    border-radius: 0px 0px 0px 0px;
+    margin-top: 5px;
+}
+
+
+#window,
+
+#workspaces {
+    margin-left: 5px;
+    background: @background;
+    color: #f5e0dc;
+    padding: 1px 1px 1px 1px;
+    margin-top: 5px;
+}
+
+#clock {
+    color: @primary;
+    margin-top: 5px;
+}
+
+#clock:hover {
+    background-color: @hover;
+}
+
+#custom-spotify {
+    padding: 1px 6px 1px 8px;
+    margin-left: 5px;
+}
+
+
+#power-profiles-daemon {
+    padding-right: 15px;
+        color: #000000;
+}
+
+#power-profiles-daemon.performance {
+    color: #ffffff;
+}
+
+#power-profiles-daemon.balanced {
+    color: #ffffff;
+}
+
+#power-profiles-daemon.power-saver {
+    color: #000000;
+}
+
+label:focus {
+    background: rgb(30, 30, 46);
+}
+
+
+#memory:hover {
+    background-color: @hover;
+}
+
+
+#backlight {
+    color: #a6e3a1;
+
+}
+
+#backlight:hover {
+    background-color: @hover;
+}
+
+
+
+#pulseaudio {
+    color: #fab387;
+}
+
+#pulseaudio.muted {
+    color: #fab387;
+}

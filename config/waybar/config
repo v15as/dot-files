@@ -2,9 +2,9 @@
         "layer": "bottom",
         "position": "top",
         "reload_style_on_change": true,
-        "modules-left": ["custom/notification","clock","custom/pacman","tray"],
-        "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["group/expand", "custom/diskfree","bluetooth","network","battery"],
+        "modules-left": ["custom/notification", "hyprland/workspaces", "custom/spotify"],
+        "modules-center": ["clock"],
+        "modules-right": ["group/expand", "pulseaudio/slider", "network","battery"],
 
         "pulseaudio/slider": {
             "min": 0,
@@ -14,14 +14,11 @@
 
         "hyprland/workspaces": {
             "format": "{icon}",
-            "format-icons": {
-                "active": "",
-                "default": "",
-                "empty": ""
-            },
+            "on-click": "activate",
             "persistent-workspaces": {
-                "*": [ 1,2,3,4,5 ]
-            }
+                "*": [ 1,2,3 ]
+            },
+            "sort-by-number": true
         },
 
         "custom/diskfree": {
@@ -38,7 +35,7 @@
             "escape": true
         },
         "clock": {
-            "format": "{:%H:%M:%S} ",
+            "format": "{:%H:%M}",
             "interval": 1,   
             "tooltip-format": "<tt>{calendar}</tt>",
             "calendar": {
@@ -116,7 +113,7 @@
                 "transition-to-left": true,
                 "click-to-reveal": true
             },
-            "modules": ["custom/expand", "custom/colorpicker","cpu","memory","temperature", "pulseaudio/slider", "custom/endpoint"],
+            "modules": ["custom/expand", "custom/colorpicker","cpu","memory","temperature", "custom/pacman", "custom/diskfree", "tray"],
         },
         "custom/colorpicker": {
             "format": "󰏘",
@@ -141,5 +138,14 @@
             "icon-size": 14,
             "spacing": 10
         },
+        "custom/spotify": {
+            "exec": "/usr/bin/python3 ~/.config/scripts/mediaplayer.py --player spotify",
+            "format": "{}  ",
+            "return-type": "json",
+            "on-click": "playerctl --player spotify play-pause",
+            "on-double-click": "playerctl next",
+            "on-scroll-up": "playerctl next",
+            "on-scroll-down": "playerctl previous"
+        }
 } 
 

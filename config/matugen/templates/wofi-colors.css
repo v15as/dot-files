@@ -1,0 +1,38 @@
+/*
+* Css Colors
+* Generated with Matugen
+*/
+<* for name, value in colors *>
+    @define-color {{name}} {{value.default.hex}};
+<* endfor *>
+
+* {
+    font-family: "CodeNewRoman Nerd Font Propo";
+    font-size: 15px;
+}
+
+#window {
+    background: @background;
+    color: @on_background;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+#input {
+    background: alpha(@background, 0.8);
+    color: @on_background;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+#entry {
+    padding: 5px;
+    color: @on_background;
+}
+
+#entry:selected {
+    background: @inverse_primary; /* Pywal’s primary color */
+    color: @on_background;
+    border-radius: 5px;
+}
